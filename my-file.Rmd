@@ -1,0 +1,36 @@
+---
+title: A very important report about the iris dataset
+author: Gonzalo Rivero
+output:
+  pdf_document
+---
+
+# Data analysis
+
+This is a very important document in which we analyze the totally,
+completely unknown _iris_ dataset which contains three plant species
+(setosa, virginica, versicolor) and four features measured for each
+sample.
+
+```{r}
+library(nnet)
+data(iris)
+head(iris)
+```
+
+We study different models to classify the species using petal and
+sepal information. For instance, the very best, unbeatable model is
+the multinomial logistic regression:
+
+```{r}
+mod <- lm(as.numeric(Species) ~ ., data=iris)
+mod
+```
+
+which works very well as can be seen in the confusion matrix:
+
+```{r}
+table(iris$Species, cut(predict(mod), c(0, 1, 2, 3)))
+```
+
+Isn't it awesome?
