@@ -1,3 +1,3 @@
 # Added a comment at the top
-runif(20)
-
+N <- runif(20)
+M <- rnorm(10)
